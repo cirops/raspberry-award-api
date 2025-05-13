@@ -1,0 +1,42 @@
+{
+  "name": "raspberry-award-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
+    "lint": "eslint 'src/**/*.{ts,js}'",
+    "format": "prettier --write 'src/**/*.{ts,js,json}'",
+    "prepare": "husky"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "@commitlint/config-conventional": "^19.8.1",
+    "@eslint/eslintrc": "^3.3.1",
+    "@eslint/js": "^9.26.0",
+    "@types/express": "^5.0.1",
+    "@types/node": "^22.15.17",
+    "@typescript-eslint/eslint-plugin": "^8.32.1",
+    "@typescript-eslint/parser": "^8.32.1",
+    "commitlint": "^19.8.1",
+    "eslint": "^9.26.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-prettier": "^5.4.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.0.0",
+    "prettier": "^3.5.3",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.8.3"
+  },
+  "lint-staged": {
+    "src/**/*.{ts,js}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  }
+}
