@@ -12,7 +12,7 @@ export function listMovies(_: Request, res: Response) {
   res.json(result);
 }
 
-export function getAwardIntervals(_: Request, res: Response) {
+export function getMovieAwardIntervals(_: Request, res: Response) {
   const movieRepository = new MovieRepository();
   const useCase = new GetAwardIntervalsUseCase(movieRepository);
   const result = useCase.execute();

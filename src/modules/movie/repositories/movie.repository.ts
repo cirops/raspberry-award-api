@@ -8,7 +8,6 @@ export class MovieRepository {
         `
         SELECT id, year, title, studios, producers, winner
         FROM movies
-        WHERE winner = 1
         ORDER BY title ASC
       `
       )

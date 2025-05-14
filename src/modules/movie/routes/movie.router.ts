@@ -1,11 +1,14 @@
 import { Router } from 'express';
 
-import { getAwardIntervals, listMovies } from '../controllers/movie.controller';
+import {
+  getMovieAwardIntervals,
+  listMovies,
+} from '../controllers/movie.controller';
 
 const movieRouter = Router();
 
 movieRouter.get('/', listMovies);
 
-movieRouter.get('/intervals', getAwardIntervals);
+movieRouter.get('/intervals', getMovieAwardIntervals);
 
 export { movieRouter };
