@@ -1,0 +1,62 @@
+openapi: 3.0.1
+info:
+  title: Golden Raspberry Award Intervals API
+  description: >
+    API desenvolvida para processar e analisar dados históricos da premiação "Golden Raspberry Awards"
+  version: 0.0.1
+
+servers:
+  - url: http://localhost:3000
+    description: Servidor local de desenvolvimento
+
+components:
+  schemas:
+    IntervalEntry:
+      type: object
+      properties:
+        producer:
+          type: string
+          description: Nome do produtor
+        interval:
+          type: integer
+          description: Intervalo de anos entre as premiações
+        previousWin:
+          type: integer
+          description: Ano da premiação anterior
+        followingWin:
+          type: integer
+          description: Ano da premiação seguinte
+      required:
+        - producer
+        - interval
+        - previousWin
+        - followingWin
+
+    GetMovieIntervalsResponse:
+      type: object
+      properties:
+        min:
+          type: array
+          items:
+            $ref: '#/components/schemas/IntervalEntry'
+        max:
+          type: array
+          items:
+            $ref: '#/components/schemas/IntervalEntry'
+      required:
+        - min
+        - max
+
+paths:
+  /movies/intervals:
+    get:
+      summary: Lista os produtores com os intervalos mínimos e máximos entre vitórias
+      tags:
+        - Filmes
+      responses:
+        '200':
+          description: Lista de produtores com menor e maior intervalo entre premiações
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetMovieIntervalsResponse'
