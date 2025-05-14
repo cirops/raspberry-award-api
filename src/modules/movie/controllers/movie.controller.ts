@@ -13,7 +13,8 @@ export function listMovies(_: Request, res: Response) {
 }
 
 export function getAwardIntervals(_: Request, res: Response) {
-  const useCase = new GetAwardIntervalsUseCase();
+  const movieRepository = new MovieRepository();
+  const useCase = new GetAwardIntervalsUseCase(movieRepository);
   const result = useCase.execute();
 
   res.json(result);

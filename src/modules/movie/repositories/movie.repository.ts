@@ -6,8 +6,24 @@ export class MovieRepository {
     const rows = db
       .prepare(
         `
-        SELECT id, year, title, studios, producer, winner
+        SELECT id, year, title, studios, producers, winner
         FROM movies
+        WHERE winner = 1
+        ORDER BY title ASC
+      `
+      )
+      .all();
+
+    return rows.map(Movie.fromRow);
+  }
+
+  findWinningProducers(): { producers: string; year: number }[] {
+    const rows = db
+      .prepare(
+        `
+        SELECT producers, year
+        FROM movies
+        WHERE winner = 1
         ORDER BY year ASC
       `
       )

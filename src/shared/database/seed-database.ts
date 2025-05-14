@@ -1,6 +1,5 @@
 import { db } from './index';
 import { parseCsv, CsvMovieRow } from '../providers/csv-parser.provider';
-import { parseProducerNames } from '../utils/parse-producer-names';
 
 export async function seedDatabase() {
   db.prepare(
@@ -10,35 +9,23 @@ export async function seedDatabase() {
       year INTEGER,
       title TEXT,
       studios TEXT,
-      producer TEXT,
+      producers TEXT,
       winner BOOLEAN
     )
   `
   ).run();
 
   const insert = db.prepare(`
-    INSERT INTO movies (year, title, studios, producer, winner)
-    VALUES (@year, @title, @studios, @producer, @winner)
+    INSERT INTO movies (year, title, studios, producers, winner)
+    VALUES (@year, @title, @studios, @producers, @winner)
   `);
 
   const insertMany = db.transaction((movies: CsvMovieRow[]) => {
-    for (const {
-      producers: producersString,
-      studios,
-      title,
-      winner,
-      year,
-    } of movies) {
-      const producers = parseProducerNames(producersString);
-      for (const producer of producers) {
-        insert.run({
-          year,
-          title,
-          studios,
-          producer,
-          winner: winner ? 1 : 0,
-        });
-      }
+    for (const movie of movies) {
+      insert.run({
+        ...movie,
+        winner: movie.winner ? 1 : 0,
+      });
     }
   });
 

@@ -1,13 +1,11 @@
-import { Router, Request, Response } from 'express';
+import { Router } from 'express';
 
-import { listMovies } from '../controllers/movie.controller';
+import { getAwardIntervals, listMovies } from '../controllers/movie.controller';
 
 const movieRouter = Router();
 
 movieRouter.get('/', listMovies);
 
-movieRouter.get('/intervals', function (_: Request, res: Response) {
-  res.json([]);
-});
+movieRouter.get('/intervals', getAwardIntervals);
 
 export { movieRouter };
