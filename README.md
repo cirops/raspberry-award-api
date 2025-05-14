@@ -14,19 +14,21 @@ API desenvolvida para processar e analisar dados históricos da premiação "Gol
 
 ## Como rodar o projeto
 
-### 0. Rodar com Docker
-Caso tenha o Docker instalado, você pode rodar o projeto com o seguinte comando:
 
+
+### 1. Clonar o repositório
+
+```bash
+git clone https://github.com/cirops/raspberry-award-api.git
+cd raspberry-award-api
+```
+
+### 1.5. Rodar com Docker
+Caso tenha o Docker instalado, você pode rodar o projeto com o seguinte comando:
 ```bash
 docker-compose up --build
 ```
 Dessa forma, é possível pular para o passo 4
-### 1. Clonar o repositório
-
-```bash
-git clone https://github.com/cirops/golden-raspberry-api.git
-cd golden-raspberry-api
-```
 
 ### 2. Instalar dependências
 
