@@ -1,7 +1,8 @@
-import { defineConfig, globalIgnores } from 'eslint/config';
+import { defineConfig } from 'eslint/config';
 import typescriptEslint from '@typescript-eslint/eslint-plugin';
 import prettier from 'eslint-plugin-prettier';
 import tsParser from '@typescript-eslint/parser';
+import importPlugin from 'eslint-plugin-import';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import js from '@eslint/js';
@@ -29,6 +30,7 @@ export default defineConfig([
     plugins: {
       '@typescript-eslint': typescriptEslint,
       prettier,
+      import: importPlugin,
     },
 
     languageOptions: {
@@ -42,6 +44,21 @@ export default defineConfig([
 
     rules: {
       'prettier/prettier': 'error',
+      'import/order': [
+        'error',
+        {
+          groups: [
+            'builtin',
+            'external',
+            ['internal', 'parent', 'sibling', 'index'],
+          ],
+          'newlines-between': 'always',
+          alphabetize: {
+            order: 'asc',
+            caseInsensitive: true,
+          },
+        },
+      ],
     },
   },
 ]);
