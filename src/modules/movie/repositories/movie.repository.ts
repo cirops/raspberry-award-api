@@ -6,10 +6,10 @@ export class MovieRepository {
     const rows = db
       .prepare(
         `
-      SELECT id, year, title, studios, producers, winner
-      FROM movies
-      ORDER BY year ASC
-    `
+        SELECT id, year, title, studios, producer, winner
+        FROM movies
+        ORDER BY year ASC
+      `
       )
       .all();
 

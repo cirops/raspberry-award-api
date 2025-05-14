@@ -4,7 +4,7 @@ export class Movie {
     public readonly year: number,
     public readonly title: string,
     public readonly studios: string,
-    public readonly producers: string,
+    public readonly producer: string,
     public readonly winner: boolean
   ) {}
 
@@ -15,7 +15,7 @@ export class Movie {
       row.year,
       row.title,
       row.studios,
-      row.producers,
+      row.producer,
       row.winner === 1
     );
   }
