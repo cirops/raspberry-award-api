@@ -1,0 +1,8 @@
+@baseURL = http://localhost:3000
+
+# @name get_movie_award_intervals
+GET {{baseURL}}/movies/intervals
+
+###
+# @name list_movies
+GET {{baseURL}}/movies
