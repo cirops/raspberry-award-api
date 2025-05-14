@@ -14,6 +14,13 @@ API desenvolvida para processar e analisar dados históricos da premiação "Gol
 
 ## Como rodar o projeto
 
+### 0. Rodar com Docker
+Caso tenha o Docker instalado, você pode rodar o projeto com o seguinte comando:
+
+```bash
+docker-compose up --build
+```
+Dessa forma, é possível pular para o passo 4
 ### 1. Clonar o repositório
 
 ```bash
