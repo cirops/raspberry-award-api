@@ -6,7 +6,9 @@ import { z } from 'zod';
 dotenv.config();
 
 const envSchema = z.object({
-  NODE_ENV: z.enum(['development', 'test', 'production']),
+  NODE_ENV: z
+    .enum(['development', 'test', 'production'])
+    .default('development'),
   PORT: z
     .string()
     .regex(/^[0-9]+$/, 'Only numbers')
@@ -15,6 +17,7 @@ const envSchema = z.object({
   CSV_PATH: z
     .string()
     .min(1, 'CSV_PATH must not be empty')
+    .default('data/Movielist.csv')
     .refine((val) => val.endsWith('.csv'), {
       message: 'CSV_PATH must point to a .csv file',
     })
