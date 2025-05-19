@@ -36,14 +36,22 @@ Dessa forma, é possível pular para o passo 4
 npm install
 ```
 
-### 3. Executar o projeto
+### 3. Configurar as variáveis de ambiente
+Copie o arquivo `.env.example` para `.env` e ajuste as variáveis conforme necessário.
+
+```bash
+touch .env
+cp .env.example .env
+```
+
+### 4. Executar o projeto
 
 ```bash
 npm run dev
 ```
 A API estará disponível em `http://localhost:3000`.
 
-### 4. Consumir o endpoint
+### 5. Consumir o endpoint
 
 ```http
 GET http://localhost:3000/movies/intervals
@@ -70,13 +78,13 @@ Retorno no formato:
 }
 ```
 
-### 5. Executar os testes
+### 6. Executar os testes
 
 ```bash
 npm run test
 ```
 
-### 6. Consultar a documentação swagger
+### 7. Consultar a documentação swagger
 A documentação da API está disponível em `http://localhost:3000/docs`.
 
 ## Extras implementados
